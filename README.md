@@ -1,48 +1,80 @@
-******** This repository contains the data collected from the experiments conducted using OAI 5G NR integrated with RIS ********
+# RIS-Assisted 5G NR Experimental Dataset
 
-**--------------------------------------------------------------------------------------------------------------------------------------------------------**
-1. RIS is ON\
-   i. UE alone throughput when RIS is Beamforming to UE alone\
-  ii. UE alone throughput when RIS is Beamforming to other UE\
- iii. UE alone throughput when RIS is sweeping between two directions\
-        &emsp; a. All combinations of Ts and Tc \
-      iv. Both the UEs throughput when RIS is sweeping between two directions\
-        &emsp; a. All combinations of Ts and Tc
+This repository contains experimental data collected from an OpenAirInterface (OAI) 5G NR system integrated with a Reconfigurable Intelligent Surface (RIS). The dataset is intended to support analysis and validation of RIS-assisted wireless communication performance.
 
-3. RIS is OFF\
-   i. UE alone throughput\
-  ii. Both the UEs throughput\
-   &emsp; a. All Tc values
-   
-4. RIS is removed from the location\
-   i. UE alone throughput at the same UE position as RIS ON or RIS OFF case
-   
-6. GRID around the position of UEs\
-   i. RIS is ON\
-   &emsp; a. 00 - Both the UEs are not placed in the directions of the RIS pointing\
-   &emsp; &emsp; i. Three different distances (D1, D2, D3)\
-   &emsp; b. 01/10 - One UE is placed in the direction of RIS pointing and the other UE is placed in the direction where RIS is not pointing\
-   &emsp; &emsp; i. Three different distances (D1, D2, D3)\
-   &emsp; c. 11 - Both the UEs are placed exactly in the same directions of RIS pointing\
-   &emsp; &emsp; i. Three different distances (D1, D2, D3)\
-   ii. RIS is OFF\
-   &emsp; a. Same locations of UEs as "RIS is ON" case before\
-   &emsp; &emsp; i. Same three different distances (D1, D2, D3)
+---
 
-**---------------------------------------------------------------------------------------------------------------------------------------------------------
-**                
+## 📁 Dataset Description
 
-**Note:**       
-1. Folder name and File names are written accordingly what data it contains
-2. The notation for GRID RIS on/off cases 00/01/10/11 :\
-    (RIS is randomly switching between two directions and beamform for Ts seconds in each direction)\
-    &emsp; 00 - Both the UEs are not placed in the directions of the RIS pointing\
-    &emsp; 01/10 - One UE is placed in the direction of RIS pointing and the other UE is placed in the direction where RIS is not pointing\
-    &emsp; 11 - Both the UEs are placed exactly in the same directions of RIS pointing
-3. D1, D2, D3 are the angular distances from RIS sucha that (D1 < D2 < D3)
-4. There are two UEs: UE1 and UE2
-5. UE1 is at 30 degree and UE2 is at 60 degree
-6. Ts is RIS switching interval in seconds : possible values are 1, 3, 5, 9, and 15
-7. Tc is the EWMA throughput window size in slots : possible values are 200, 2000, and 20000
----------------------------------------------------- ****************************  ------------------------------------------------------------------------
+### 1. RIS ON
+- **Single UE Throughput**
+  - UE throughput when RIS beamforms toward the same UE
+  - UE throughput when RIS beamforms toward the other UE
+  - UE throughput when RIS sweeps between two directions  
+    - All combinations of switching interval (**Ts**) and averaging window (**Tc**)
 
+- **Dual UE Throughput**
+  - Throughput of both UEs when RIS sweeps between two directions  
+    - All combinations of **Ts** and **Tc**
+
+---
+
+### 2. RIS OFF
+- **Single UE Throughput**
+- **Dual UE Throughput**
+  - Evaluated across all **Tc** values
+
+---
+
+### 3. RIS Removed
+- UE throughput measured at the same UE positions as in RIS ON/OFF scenarios
+
+---
+
+### 4. Grid-Based UE Placement
+
+#### RIS ON
+- **00 Configuration**
+  - Both UEs are outside RIS beam directions  
+  - Evaluated at three distances: D1, D2, D3
+
+- **01 / 10 Configuration**
+  - One UE aligned with RIS beam, the other not  
+  - Evaluated at three distances: D1, D2, D3
+
+- **11 Configuration**
+  - Both UEs aligned with RIS beam directions  
+  - Evaluated at three distances: D1, D2, D3
+
+#### RIS OFF
+- Same UE positions as RIS ON case  
+- Same three distances: D1, D2, D3
+
+---
+
+## 🧾 Notes
+
+1. Folder and file names are self-explanatory and indicate the corresponding dataset.
+2. Grid notation (00 / 01 / 10 / 11):
+   - RIS alternates between two beam directions, staying **Ts seconds** in each direction.
+   - `00` → Neither UE is in RIS beam direction  
+   - `01 / 10` → One UE is aligned, the other is not  
+   - `11` → Both UEs are aligned with RIS beam directions  
+
+3. Distance definitions:
+   - D1 < D2 < D3 (angular distance from RIS)
+
+4. System setup:
+   - Two UEs: **UE1** and **UE2**
+   - UE1 positioned at **30°**
+   - UE2 positioned at **60°**
+
+5. Parameters:
+   - **Ts (RIS switching interval in seconds)**: {1, 3, 5, 9, 15}
+   - **Tc (EWMA throughput window size in slots)**: {200, 2000, 20000}
+
+---
+
+## 🎯 Purpose
+
+This dataset is provided to enable reproducible research and deeper analysis of RIS-assisted communication systems in practical 5G NR environments.
